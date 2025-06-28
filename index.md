@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cracklab Tuner - Teclado FL Studio</title>
+    <title>Cracklab Tuner - Diseño Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/pitchy@4.1.0/dist/pitchy.min.js"></script>
@@ -15,38 +15,51 @@
             --dark: #1e293b;
             --darker: #0f172a;
             --light: #f1f5f9;
+            
+            --guitar-e2: linear-gradient(145deg, #ef4444, #dc2626);
+            --guitar-a2: linear-gradient(145deg, #f97316, #ea580c);
+            --guitar-d3: linear-gradient(145deg, #eab308, #ca8a04);
+            --guitar-g3: linear-gradient(145deg, #22c55e, #16a34a);
+            --guitar-b3: linear-gradient(145deg, #3b82f6, #2563eb);
+            --guitar-e4: linear-gradient(145deg, #8b5cf6, #7c3aed);
+            
+            --bass-e1: linear-gradient(145deg, #ef4444, #b91c1c);
+            --bass-a1: linear-gradient(145deg, #f97316, #c2410c);
+            --bass-d2: linear-gradient(145deg, #eab308, #a16207);
+            --bass-g2: linear-gradient(145deg, #22c55e, #15803d);
         }
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--darker), var(--dark));
+            background: linear-gradient(135deg, #0b1120, #0f172a);
             color: var(--light);
             overflow-x: hidden;
             min-height: 100vh;
         }
         .tuner-container {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(100, 116, 139, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            background: rgba(21, 30, 46, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             max-width: 1200px;
             margin: 0 auto;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
         }
         
         /* --- Botones Mejorados --- */
         .instrument-btn {
             transition: all 0.3s ease;
-            background: linear-gradient(145deg, #2c3e50, #1a1f27);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            border-radius: 12px;
-            padding: 12px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            padding: 14px;
             text-align: center;
             font-weight: 600;
             position: relative;
             overflow: hidden;
             border: none;
             color: #e2e8f0;
+            font-size: 15px;
         }
         .instrument-btn::before {
             content: '';
@@ -56,46 +69,47 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-            border-radius: 12px;
+            border-radius: 14px;
             pointer-events: none;
         }
         .instrument-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
         }
         .instrument-btn.active {
             background: linear-gradient(145deg, var(--primary), #2563eb);
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
             color: white;
             z-index: 2;
         }
         
         .wave-btn {
             transition: all 0.3s ease;
-            background: linear-gradient(145deg, #2c3e50, #1a1f27);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            border-radius: 8px;
-            padding: 8px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            padding: 10px;
             text-align: center;
             font-weight: 500;
             position: relative;
             overflow: hidden;
             border: none;
             color: #e2e8f0;
+            font-size: 14px;
         }
         .wave-btn.active {
             background: linear-gradient(145deg, var(--primary), #2563eb);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
             color: white;
         }
         
         .control-btn {
             transition: all 0.3s ease;
             background: linear-gradient(145deg, #2563eb, #1d4ed8);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-            padding: 16px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 18px;
+            padding: 18px;
             text-align: center;
             font-weight: 600;
             position: relative;
@@ -105,11 +119,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
+            font-size: 18px;
         }
         .control-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
         }
         .control-btn.stop {
             background: linear-gradient(145deg, #ef4444, #dc2626);
@@ -119,84 +134,100 @@
         }
         .control-btn.mic.active {
             background: linear-gradient(145deg, #ec4899, #db2777);
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
         }
         
         .string-btn {
             transition: all 0.3s ease;
-            background: linear-gradient(145deg, #334155, #1e293b);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
-            border-radius: 12px;
-            padding: 16px 8px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 14px;
+            padding: 18px 10px;
             text-align: center;
             font-weight: 600;
             position: relative;
             overflow: hidden;
             border: none;
-            color: #e2e8f0;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
         }
         .string-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
         }
         .string-btn.active {
-            background: linear-gradient(145deg, var(--accent), #d97706);
-            color: white;
             transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
         }
+        
+        /* Colores específicos para cuerdas */
+        .string-btn[data-note="E"][data-octave="2"] { background: var(--guitar-e2); }
+        .string-btn[data-note="A"][data-octave="2"] { background: var(--guitar-a2); }
+        .string-btn[data-note="D"][data-octave="3"] { background: var(--guitar-d3); }
+        .string-btn[data-note="G"][data-octave="3"] { background: var(--guitar-g3); }
+        .string-btn[data-note="B"][data-octave="3"] { background: var(--guitar-b3); }
+        .string-btn[data-note="E"][data-octave="4"] { background: var(--guitar-e4); }
+        
+        .string-btn[data-note="E"][data-octave="1"] { background: var(--bass-e1); }
+        .string-btn[data-note="A"][data-octave="1"] { background: var(--bass-a1); }
+        .string-btn[data-note="D"][data-octave="2"] { background: var(--bass-d2); }
+        .string-btn[data-note="G"][data-octave="2"] { background: var(--bass-g2); }
         
         /* --- Indicadores visuales --- */
         .needle {
-            height: 80%; width: 4px; background: white;
+            height: 80%; width: 5px; background: linear-gradient(to top, #f59e0b, white);
             transform-origin: bottom center; transition: transform 0.2s ease;
         }
         .tuner-zone {
             background: linear-gradient(90deg, #ef4444 0%, #f59e0b 40%, #22c55e 48%, #22c55e 52%, #f59e0b 60%, #ef4444 100%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
         }
         .meter-point {
             transition: left 0.2s ease;
+            box-shadow: 0 0 8px white;
         }
         
         /* --- Piano Styles --- */
         .piano-keyboard {
             display: flex;
             position: relative;
-            height: 180px;
+            height: 200px;
             background: linear-gradient(to bottom, #1e293b, #0f172a);
-            border-radius: 8px;
-            padding: 10px;
-            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 12px;
+            box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.5);
             overflow-x: auto;
         }
         .key {
             border: 1px solid #334155;
-            border-radius: 0 0 5px 5px;
+            border-radius: 0 0 6px 6px;
             cursor: pointer;
             transition: all 0.1s ease;
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding-bottom: 8px;
+            padding-bottom: 10px;
             font-weight: 600;
-            font-size: 12px;
+            font-size: 14px;
             color: #64748b;
             position: relative;
         }
         .key.white {
-            width: calc(100% / 14); /* 14 white keys in 2 octaves */
-            height: 160px;
+            width: calc(100% / 14);
+            height: 180px;
             background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
             z-index: 1;
-            box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.15);
         }
         .key.black {
-            width: calc(100% / 14 * 0.6);
-            height: 100px;
+            width: calc(100% / 14 * 0.65);
+            height: 110px;
             background: linear-gradient(to bottom, #1e293b, #0f172a);
             position: absolute;
             z-index: 2;
             color: #94a3b8;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
         }
         .key.white:active, .key.white.pressed {
             background: linear-gradient(to bottom, #fcd34d, #f59e0b);
@@ -210,8 +241,8 @@
         /* Key labels for mobile */
         .key-label {
             position: absolute;
-            bottom: 5px;
-            font-size: 10px;
+            bottom: 8px;
+            font-size: 11px;
             color: #64748b;
             font-weight: bold;
         }
@@ -232,24 +263,25 @@
         /* --- Slider Styles --- */
         input[type="range"] {
             -webkit-appearance: none;
-            height: 8px;
-            border-radius: 4px;
+            height: 10px;
+            border-radius: 5px;
             background: linear-gradient(90deg, var(--primary) 0%, var(--primary) var(--progress, 75%), #334155 var(--progress, 75%), #334155 100%);
             outline: none;
         }
         input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
             background: white;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
             cursor: pointer;
             transition: all 0.2s ease;
+            border: 2px solid #1e293b;
         }
         input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
+            transform: scale(1.25);
+            box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.3);
         }
         
         /* --- Tunning Indicator --- */
@@ -258,43 +290,45 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             transition: all 0.3s ease;
-            background: rgba(30, 41, 59, 0.7);
-            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
         }
         .tuner-indicator.in-tune {
-            background: rgba(34, 197, 94, 0.2);
-            box-shadow: 0 0 0 8px rgba(34, 197, 94, 0.3);
+            background: rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 0 10px rgba(34, 197, 94, 0.4);
             color: white;
         }
         .tuner-indicator.sharp {
-            background: rgba(239, 68, 68, 0.2);
-            box-shadow: 0 0 0 8px rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 0 0 10px rgba(239, 68, 68, 0.4);
             color: white;
         }
         
         /* --- Section Styles --- */
         .section-box {
             background: linear-gradient(145deg, #1e293b, #0f172a);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.3), 0 6px 8px -6px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(71, 85, 105, 0.2);
         }
         
         .freq-display {
             background: linear-gradient(145deg, #0f172a, #1e293b);
-            border-radius: 12px;
-            padding: 16px;
+            border-radius: 16px;
+            padding: 20px;
             text-align: center;
-            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(71, 85, 105, 0.2);
         }
         
         /* --- Custom glow effects --- */
@@ -302,9 +336,9 @@
             animation: glowPulse 2s infinite ease-in-out;
         }
         @keyframes glowPulse {
-            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.6); }
-            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.6); }
+            0% { box-shadow: 0 0 6px rgba(59, 130, 246, 0.7); }
+            50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.9); }
+            100% { box-shadow: 0 0 6px rgba(59, 130, 246, 0.7); }
         }
         
         .header-gradient {
@@ -312,17 +346,19 @@
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         /* Oscilloscope styles */
         .oscilloscope-container {
             background: #0f172a;
-            border-radius: 12px;
-            height: 120px;
-            margin: 20px 0;
+            border-radius: 14px;
+            height: 140px;
+            margin: 25px 0;
             position: relative;
             overflow: hidden;
-            box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(71, 85, 105, 0.2);
         }
         .oscilloscope {
             width: 100%;
@@ -330,55 +366,58 @@
         }
         .oscilloscope-label {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            color: #64748b;
-            font-size: 12px;
+            bottom: 12px;
+            right: 12px;
+            color: #94a3b8;
+            font-size: 14px;
             font-weight: 500;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
         }
         
         /* String button active state */
         .string-btn.active-playing {
-            animation: stringGlow 1s infinite alternate;
+            animation: stringGlow 1.2s infinite alternate;
         }
         @keyframes stringGlow {
-            from { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
-            to { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
+            from { box-shadow: 0 0 6px rgba(245, 158, 11, 0.6); }
+            to { box-shadow: 0 0 25px rgba(245, 158, 11, 0.9); }
         }
         
         /* Key active state */
         .key.pressed {
-            animation: keyGlow 0.5s;
+            animation: keyGlow 0.6s;
         }
         @keyframes keyGlow {
-            0% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
+            0% { box-shadow: 0 0 6px rgba(245, 158, 11, 0.6); }
+            50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.9); }
+            100% { box-shadow: 0 0 6px rgba(245, 158, 11, 0.6); }
         }
         
         /* Keyboard mapping guide */
         .keyboard-guide {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
-            margin-top: 15px;
-            padding: 10px;
-            background: rgba(30, 41, 59, 0.5);
-            border-radius: 10px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(30, 41, 59, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(71, 85, 105, 0.2);
         }
         .key-guide-item {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 12px;
+            gap: 6px;
+            font-size: 13px;
             color: #94a3b8;
         }
         .key-guide-key {
             background: #334155;
-            padding: 3px 8px;
-            border-radius: 4px;
+            padding: 4px 10px;
+            border-radius: 5px;
             font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
         
         /* Responsive adjustments */
@@ -387,64 +426,64 @@
                 padding: 15px;
             }
             .section-box {
-                padding: 16px;
+                padding: 20px;
             }
             .instrument-btn, .string-btn {
-                padding: 10px;
+                padding: 12px;
                 font-size: 14px;
             }
             .control-btn {
-                padding: 12px;
+                padding: 14px;
                 font-size: 16px;
             }
             .piano-keyboard {
-                height: 150px;
+                height: 160px;
             }
             .key.white {
-                height: 130px;
+                height: 140px;
             }
             .key.black {
-                height: 85px;
+                height: 90px;
             }
             .tuner-indicator {
-                width: 60px;
-                height: 60px;
-                font-size: 18px;
+                width: 70px;
+                height: 70px;
+                font-size: 22px;
             }
             .freq-display {
-                padding: 12px;
+                padding: 16px;
             }
             #detectedNote {
-                font-size: 40px;
+                font-size: 42px;
             }
             .key-label {
-                font-size: 8px;
+                font-size: 9px;
             }
             .keyboard-guide {
-                display: none; /* Hide on mobile */
+                display: none;
             }
         }
         
         @media (max-width: 480px) {
             .piano-keyboard {
-                height: 120px;
+                height: 140px;
             }
             .key.white {
-                height: 100px;
+                height: 110px;
             }
             .key.black {
-                height: 70px;
+                height: 75px;
             }
             .instrument-btn, .wave-btn {
-                font-size: 12px;
-                padding: 8px;
+                font-size: 13px;
+                padding: 10px;
             }
             .control-btn {
-                padding: 10px;
-                font-size: 14px;
+                padding: 12px;
+                font-size: 15px;
             }
             #detectedNote {
-                font-size: 32px;
+                font-size: 36px;
             }
         }
         
@@ -455,40 +494,63 @@
             left: 0;
             right: 0;
             background: rgba(15, 23, 42, 0.95);
-            padding: 10px;
+            padding: 12px;
             display: flex;
             justify-content: space-around;
             z-index: 100;
             border-top: 1px solid #334155;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
         }
         .mobile-key-helper button {
             background: #334155;
             border: none;
-            border-radius: 8px;
-            padding: 8px 12px;
+            border-radius: 10px;
+            padding: 10px 14px;
             color: white;
             font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            min-width: 50px;
+        }
+        
+        /* Decoración premium */
+        .accent-border {
+            position: relative;
+        }
+        .accent-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.7), 0 0 20px rgba(59, 130, 246, 0.4);
         }
     </style>
 </head>
 <body class="min-h-screen p-4">
-    <div class="tuner-container p-6">
-        <div class="text-center mb-8">
-            <h1 class="text-4xl md:text-5xl font-bold header-gradient mb-2">
+    <div class="tuner-container p-8">
+        <div class="text-center mb-10">
+            <h1 class="text-5xl md:text-6xl font-bold header-gradient mb-3">
                 <i class="fas fa-rocket mr-3"></i>Cracklab Tuner
             </h1>
-            <p class="text-gray-400">Herramienta de precisión para músicos</p>
+            <p class="text-gray-400 text-xl">Herramienta de precisión para músicos profesionales</p>
         </div>
         
-        <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex flex-col lg:flex-row gap-10">
             <!-- Sección izquierda: Generador de tono -->
             <div class="lg:w-1/2">
-                <div class="section-box">
-                    <h2 class="text-xl md:text-2xl font-bold text-blue-400 mb-6"><i class="fas fa-wave-square mr-2"></i>Generador de Tono</h2>
+                <div class="section-box accent-border">
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-400 mb-8"><i class="fas fa-wave-square mr-3"></i>Generador de Tono</h2>
                     
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-300 mb-3">Modo:</label>
-                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-300 mb-4">Modo:</label>
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                             <button id="guitarBtn" class="instrument-btn">Guitarra</button>
                             <button id="bassBtn" class="instrument-btn">Bajo</button>
                             <button id="pianoBtn" class="instrument-btn">Piano</button>
@@ -496,9 +558,9 @@
                         </div>
                     </div>
                     
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-300 mb-3">Referencia A4:</label>
-                        <select id="referenceSelect" class="w-full p-2 md:p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-300 mb-4">Referencia A4:</label>
+                        <select id="referenceSelect" class="w-full p-3 md:p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="440">440 Hz (Estándar)</option>
                             <option value="432">432 Hz (Verdi)</option>
                             <option value="442">442 Hz (Orquestal)</option>
@@ -506,10 +568,10 @@
                         </select>
                     </div>
                     
-                    <div id="generatorModeContainer" class="mb-6">
-                        <div id="stringsContainer" class="hidden grid grid-cols-3 gap-3"></div>
+                    <div id="generatorModeContainer" class="mb-8">
+                        <div id="stringsContainer" class="hidden grid grid-cols-3 gap-4"></div>
                         <div id="pianoContainer" class="hidden">
-                            <div class="keyboard-guide mb-4">
+                            <div class="keyboard-guide mb-6">
                                 <div class="key-guide-item">
                                     <span class="key-guide-key">Z</span> 
                                     <span>C3</span>
@@ -608,9 +670,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="customContainer" class="hidden col-span-3 text-center py-8 text-gray-400">
-                             <i class="fas fa-sliders-h text-3xl mb-2"></i>
-                             <p>Usa los controles para ajustar la frecuencia.</p>
+                        <div id="customContainer" class="hidden col-span-3 text-center py-10 text-gray-400">
+                             <i class="fas fa-sliders-h text-4xl mb-4"></i>
+                             <p class="text-lg">Usa los controles para ajustar la frecuencia</p>
                         </div>
                     </div>
                     
@@ -619,17 +681,17 @@
                         <div class="oscilloscope-label">OSCILOSCOPIO</div>
                     </div>
                     
-                    <div class="mb-6">
-                        <div class="flex items-center justify-between mb-2">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-3">
                             <label class="text-sm font-medium text-gray-300">Frecuencia:</label>
-                            <input type="number" id="freqInput" min="20" max="2000" step="0.001" class="w-24 md:w-28 bg-gray-900 text-blue-400 font-mono text-right p-2 rounded-lg border border-gray-700">
+                            <input type="number" id="freqInput" min="20" max="2000" step="0.001" class="w-28 bg-gray-900 text-blue-400 font-mono text-right p-3 rounded-xl border border-gray-700">
                         </div>
                         <input id="freqSlider" type="range" min="20" max="2000" value="440" step="0.001" class="w-full">
                     </div>
 
-                    <div class="mb-6">
-                        <label class="block text-sm font-medium text-gray-300 mb-2">Tipo de Onda:</label>
-                        <div class="grid grid-cols-4 gap-2">
+                    <div class="mb-8">
+                        <label class="block text-sm font-medium text-gray-300 mb-3">Tipo de Onda:</label>
+                        <div class="grid grid-cols-4 gap-3">
                             <button data-wave="sine" class="wave-btn active">Seno</button>
                             <button data-wave="square" class="wave-btn">Cuadrada</button>
                             <button data-wave="triangle" class="wave-btn">Triangular</button>
@@ -637,12 +699,12 @@
                         </div>
                     </div>
                     
-                    <div class="mb-6">
-                        <label class="text-sm font-medium text-gray-300 mb-2">Volumen: <span id="volDisplay" class="text-blue-400">75%</span></label>
+                    <div class="mb-8">
+                        <label class="text-sm font-medium text-gray-300 mb-3">Volumen: <span id="volDisplay" class="text-blue-400">75%</span></label>
                         <input id="volSlider" type="range" min="0" max="1" value="0.75" step="0.01" class="w-full">
                     </div>
                     
-                    <div class="flex gap-4">
+                    <div class="flex gap-5">
                         <button id="playBtn" class="control-btn flex-1">
                             <i class="fas fa-play"></i> Reproducir
                         </button>
@@ -655,37 +717,37 @@
             
             <!-- Sección derecha: Afinador cromático -->
             <div class="lg:w-1/2">
-                 <div class="section-box h-full">
-                    <h2 class="text-xl md:text-2xl font-bold text-yellow-400 mb-6"><i class="fas fa-microphone-alt mr-2"></i>Afinador Cromático</h2>
+                 <div class="section-box h-full accent-border">
+                    <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-8"><i class="fas fa-microphone-alt mr-3"></i>Afinador Cromático</h2>
                     
-                    <div class="mb-6 flex flex-col items-center gap-4">
+                    <div class="mb-8 flex flex-col items-center gap-5">
                         <button id="micBtn" class="control-btn mic w-full">
                             <i class="fas fa-microphone mr-3"></i> Activar Micrófono
                         </button>
                     </div>
                     
-                    <div class="relative mb-8 h-52 md:h-64 bg-gray-900 rounded-2xl overflow-hidden flex items-center justify-center">
-                        <div class="tuner-zone absolute h-4 w-full top-1/2 -translate-y-1/2 opacity-30"></div>
-                        <div class="needle absolute top-[10%] left-1/2 -translate-x-1/2" id="needle"><div class="absolute top-0 left-1/2 w-4 h-4 bg-accent rounded-full -translate-x-1/2 -translate-y-1/2"></div></div>
+                    <div class="relative mb-10 h-60 md:h-72 bg-gray-900 rounded-3xl overflow-hidden flex items-center justify-center">
+                        <div class="tuner-zone absolute h-5 w-full top-1/2 -translate-y-1/2 opacity-30"></div>
+                        <div class="needle absolute top-[10%] left-1/2 -translate-x-1/2" id="needle"><div class="absolute top-0 left-1/2 w-5 h-5 bg-accent rounded-full -translate-x-1/2 -translate-y-1/2"></div></div>
                         <div class="tuner-indicator" id="tunerIndicator"><i class="fas fa-power-off"></i></div>
                     </div>
                     
-                    <div class="text-center mb-6">
-                        <div class="freq-display inline-block mb-4">
-                            <p class="text-sm text-gray-400 mb-1">Nota detectada</p>
-                            <p id="detectedNote" class="text-4xl md:text-5xl font-extrabold text-white">--</p>
-                            <p id="detectedFreq" class="text-lg md:text-xl font-medium text-blue-400">0.00 Hz</p>
+                    <div class="text-center mb-8">
+                        <div class="freq-display inline-block mb-5">
+                            <p class="text-sm text-gray-400 mb-2">Nota detectada</p>
+                            <p id="detectedNote" class="text-5xl md:text-6xl font-extrabold text-white neon-text">--</p>
+                            <p id="detectedFreq" class="text-xl md:text-2xl font-medium text-blue-400">0.00 Hz</p>
                         </div>
-                        <p id="centsDisplay" class="text-lg md:text-xl font-bold text-gray-400">0 Cents</p>
+                        <p id="centsDisplay" class="text-2xl font-bold text-gray-400">0 Cents</p>
                     </div>
                     
-                    <div class="mb-6">
-                        <div class="flex items-center justify-between mb-2 text-sm text-gray-300">
+                    <div class="mb-8">
+                        <div class="flex items-center justify-between mb-3 text-sm text-gray-300">
                             <span>Grave</span><span id="tuneStatus" class="font-bold">APAGADO</span><span>Agudo</span>
                         </div>
-                        <div class="relative h-2 mb-1">
-                            <div class="h-1 rounded-sm bg-gradient-to-r from-red-500 via-green-500 to-red-500"></div>
-                            <div class="meter-point absolute top-[-4px] w-3 h-3 rounded-full bg-white -translate-x-1/2" id="meterPoint" style="left: 50%"></div>
+                        <div class="relative h-3 mb-2">
+                            <div class="h-2 rounded-full bg-gradient-to-r from-red-500 via-green-500 to-red-500"></div>
+                            <div class="meter-point absolute top-[-5px] w-4 h-4 rounded-full bg-white -translate-x-1/2" id="meterPoint" style="left: 50%"></div>
                         </div>
                     </div>
                 </div>
@@ -736,18 +798,18 @@
 
         const instrumentTunings = {
             guitar: [
-                { name: 'E2', note: 'E', octave: 2, color: 'from-red-500 to-red-700' },
-                { name: 'A2', note: 'A', octave: 2, color: 'from-orange-500 to-orange-700' },
-                { name: 'D3', note: 'D', octave: 3, color: 'from-yellow-500 to-yellow-700' },
-                { name: 'G3', note: 'G', octave: 3, color: 'from-green-500 to-green-700' },
-                { name: 'B3', note: 'B', octave: 3, color: 'from-blue-500 to-blue-700' },
-                { name: 'E4', note: 'E', octave: 4, color: 'from-purple-500 to-purple-700' }
+                { name: 'E2', note: 'E', octave: 2 },
+                { name: 'A2', note: 'A', octave: 2 },
+                { name: 'D3', note: 'D', octave: 3 },
+                { name: 'G3', note: 'G', octave: 3 },
+                { name: 'B3', note: 'B', octave: 3 },
+                { name: 'E4', note: 'E', octave: 4 }
             ],
             bass: [
-                { name: 'E1', note: 'E', octave: 1, color: 'from-red-500 to-red-700' },
-                { name: 'A1', note: 'A', octave: 1, color: 'from-orange-500 to-orange-700' },
-                { name: 'D2', note: 'D', octave: 2, color: 'from-yellow-500 to-yellow-700' },
-                { name: 'G2', note: 'G', octave: 2, color: 'from-green-500 to-green-700' }
+                { name: 'E1', note: 'E', octave: 1 },
+                { name: 'A1', note: 'A', octave: 1 },
+                { name: 'D2', note: 'D', octave: 2 },
+                { name: 'G2', note: 'G', octave: 2 }
             ]
         };
         const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
@@ -807,7 +869,7 @@
             canvasCtx.fillStyle = 'rgb(15, 23, 42)';
             canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
             
-            canvasCtx.lineWidth = 2;
+            canvasCtx.lineWidth = 3;
             canvasCtx.strokeStyle = 'rgb(59, 130, 246)';
             canvasCtx.beginPath();
             
@@ -829,6 +891,10 @@
             
             canvasCtx.lineTo(canvas.width, canvas.height/2);
             canvasCtx.stroke();
+            
+            // Add glow effect
+            canvasCtx.shadowBlur = 15;
+            canvasCtx.shadowColor = 'rgba(59, 130, 246, 0.8)';
         }
         
         function stopOscilloscope() {
@@ -932,10 +998,10 @@
                 instrumentTunings[mode].forEach((string, index) => {
                     const btn = document.createElement('button');
                     const freq = calculateNoteFreq(string.note, string.octave);
-                    btn.className = `string-btn bg-gradient-to-br ${string.color}`;
+                    btn.className = `string-btn`;
                     btn.dataset.note = string.note;
                     btn.dataset.octave = string.octave;
-                    btn.innerHTML = `${string.name}<br><span class="text-xs font-normal">${freq.toFixed(2)} Hz</span>`;
+                    btn.innerHTML = `${string.name}<br><span class="text-sm font-normal">${freq.toFixed(2)} Hz</span>`;
                     DOM.stringsContainer.appendChild(btn);
                 });
                 DOM.stringsContainer.classList.remove('hidden');
@@ -983,7 +1049,7 @@
                 const note = btn.dataset.note;
                 const octave = parseInt(btn.dataset.octave);
                 const freq = calculateNoteFreq(note, octave);
-                btn.innerHTML = `${note}${octave}<br><span class="text-xs font-normal">${freq.toFixed(2)} Hz</span>`;
+                btn.innerHTML = `${note}${octave}<br><span class="text-sm font-normal">${freq.toFixed(2)} Hz</span>`;
             });
         }
 
