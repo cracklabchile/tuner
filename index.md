@@ -34,6 +34,7 @@
             color: var(--light);
             overflow-x: hidden;
             min-height: 100vh;
+            padding: 1rem; /* Added for better mobile spacing */
         }
         .tuner-container {
             background: rgba(21, 30, 46, 0.9);
@@ -44,6 +45,7 @@
             margin: 0 auto;
             border-radius: 24px;
             overflow: hidden;
+            padding: 1.5rem; /* Improved padding for mobile */
         }
         
         /* --- Botones Mejorados --- */
@@ -485,6 +487,16 @@
             #detectedNote {
                 font-size: 36px;
             }
+            .tuner-container {
+                padding: 1rem; /* Better mobile padding */
+            }
+            .section-box {
+                padding: 1.5rem; /* Better mobile padding */
+            }
+            .mobile-key-helper button {
+                padding: 8px 12px; /* Better mobile button size */
+                min-width: 40px;
+            }
         }
         
         /* Mobile keyboard helper */
@@ -533,24 +545,26 @@
         }
     </style>
 </head>
-<body class="min-h-screen p-4">
-    <div class="tuner-container p-8">
-        <div class="text-center mb-10">
-            <h1 class="text-5xl md:text-6xl font-bold header-gradient mb-3">
+<body class="min-h-screen">
+    <div class="tuner-container">
+        <div class="text-center mb-8 md:mb-10"> <!-- Improved spacing -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold header-gradient mb-3"> <!-- Responsive font sizes -->
                 <i class="fas fa-rocket mr-3"></i>Cracklab Tuner
             </h1>
-            <p class="text-gray-400 text-xl">Herramienta de precisión para músicos profesionales</p>
+            <p class="text-gray-400 text-lg sm:text-xl">Herramienta de precisión para músicos profesionales</p> <!-- Better mobile font size -->
         </div>
         
-        <div class="flex flex-col lg:flex-row gap-10">
+        <div class="flex flex-col lg:flex-row gap-8 md:gap-10"> <!-- Improved gap sizes -->
             <!-- Sección izquierda: Generador de tono -->
             <div class="lg:w-1/2">
                 <div class="section-box accent-border">
-                    <h2 class="text-2xl md:text-3xl font-bold text-blue-400 mb-8"><i class="fas fa-wave-square mr-3"></i>Generador de Tono</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-blue-400 mb-6 md:mb-8"> <!-- Improved spacing -->
+                        <i class="fas fa-wave-square mr-3"></i>Generador de Tono
+                    </h2>
                     
-                    <div class="mb-8">
-                        <label class="block text-sm font-medium text-gray-300 mb-4">Modo:</label>
-                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="mb-6 md:mb-8"> <!-- Improved spacing -->
+                        <label class="block text-sm font-medium text-gray-300 mb-3 md:mb-4">Modo:</label> <!-- Improved spacing -->
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4"> <!-- Improved gap sizes -->
                             <button id="guitarBtn" class="instrument-btn">Guitarra</button>
                             <button id="bassBtn" class="instrument-btn">Bajo</button>
                             <button id="pianoBtn" class="instrument-btn">Piano</button>
@@ -558,8 +572,8 @@
                         </div>
                     </div>
                     
-                    <div class="mb-8">
-                        <label class="block text-sm font-medium text-gray-300 mb-4">Referencia A4:</label>
+                    <div class="mb-6 md:mb-8"> <!-- Improved spacing -->
+                        <label class="block text-sm font-medium text-gray-300 mb-3 md:mb-4">Referencia A4:</label> <!-- Improved spacing -->
                         <select id="referenceSelect" class="w-full p-3 md:p-4 rounded-xl bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="440">440 Hz (Estándar)</option>
                             <option value="432">432 Hz (Verdi)</option>
@@ -568,7 +582,7 @@
                         </select>
                     </div>
                     
-                    <div id="generatorModeContainer" class="mb-8">
+                    <div id="generatorModeContainer" class="mb-6 md:mb-8"> <!-- Improved spacing -->
                         <div id="stringsContainer" class="hidden grid grid-cols-3 gap-4"></div>
                         <div id="pianoContainer" class="hidden">
                             <div class="keyboard-guide mb-6">
@@ -670,8 +684,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="customContainer" class="hidden col-span-3 text-center py-10 text-gray-400">
-                             <i class="fas fa-sliders-h text-4xl mb-4"></i>
+                        <div id="customContainer" class="hidden col-span-3 text-center py-8 md:py-10 text-gray-400"> <!-- Improved spacing -->
+                             <i class="fas fa-sliders-h text-4xl mb-3 md:mb-4"></i> <!-- Improved spacing -->
                              <p class="text-lg">Usa los controles para ajustar la frecuencia</p>
                         </div>
                     </div>
@@ -681,7 +695,7 @@
                         <div class="oscilloscope-label">OSCILOSCOPIO</div>
                     </div>
                     
-                    <div class="mb-8">
+                    <div class="mb-6 md:mb-8"> <!-- Improved spacing -->
                         <div class="flex items-center justify-between mb-3">
                             <label class="text-sm font-medium text-gray-300">Frecuencia:</label>
                             <input type="number" id="freqInput" min="20" max="2000" step="0.001" class="w-28 bg-gray-900 text-blue-400 font-mono text-right p-3 rounded-xl border border-gray-700">
@@ -689,9 +703,9 @@
                         <input id="freqSlider" type="range" min="20" max="2000" value="440" step="0.001" class="w-full">
                     </div>
 
-                    <div class="mb-8">
+                    <div class="mb-6 md:mb-8"> <!-- Improved spacing -->
                         <label class="block text-sm font-medium text-gray-300 mb-3">Tipo de Onda:</label>
-                        <div class="grid grid-cols-4 gap-3">
+                        <div class="grid grid-cols-4 gap-2 md:gap-3"> <!-- Improved gap sizes -->
                             <button data-wave="sine" class="wave-btn active">Seno</button>
                             <button data-wave="square" class="wave-btn">Cuadrada</button>
                             <button data-wave="triangle" class="wave-btn">Triangular</button>
@@ -699,12 +713,12 @@
                         </div>
                     </div>
                     
-                    <div class="mb-8">
+                    <div class="mb-6 md:mb-8"> <!-- Improved spacing -->
                         <label class="text-sm font-medium text-gray-300 mb-3">Volumen: <span id="volDisplay" class="text-blue-400">75%</span></label>
                         <input id="volSlider" type="range" min="0" max="1" value="0.75" step="0.01" class="w-full">
                     </div>
                     
-                    <div class="flex gap-5">
+                    <div class="flex gap-4 md:gap-5"> <!-- Improved gap sizes -->
                         <button id="playBtn" class="control-btn flex-1">
                             <i class="fas fa-play"></i> Reproducir
                         </button>
@@ -718,22 +732,24 @@
             <!-- Sección derecha: Afinador cromático -->
             <div class="lg:w-1/2">
                  <div class="section-box h-full accent-border">
-                    <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-8"><i class="fas fa-microphone-alt mr-3"></i>Afinador Cromático</h2>
+                    <h2 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 md:mb-8"> <!-- Improved spacing -->
+                        <i class="fas fa-microphone-alt mr-3"></i>Afinador Cromático
+                    </h2>
                     
-                    <div class="mb-8 flex flex-col items-center gap-5">
+                    <div class="mb-6 md:mb-8 flex flex-col items-center gap-4 md:gap-5"> <!-- Improved spacing -->
                         <button id="micBtn" class="control-btn mic w-full">
                             <i class="fas fa-microphone mr-3"></i> Activar Micrófono
                         </button>
                     </div>
                     
-                    <div class="relative mb-10 h-60 md:h-72 bg-gray-900 rounded-3xl overflow-hidden flex items-center justify-center">
+                    <div class="relative mb-8 md:mb-10 h-52 md:h-72 bg-gray-900 rounded-3xl overflow-hidden flex items-center justify-center"> <!-- Improved spacing -->
                         <div class="tuner-zone absolute h-5 w-full top-1/2 -translate-y-1/2 opacity-30"></div>
                         <div class="needle absolute top-[10%] left-1/2 -translate-x-1/2" id="needle"><div class="absolute top-0 left-1/2 w-5 h-5 bg-accent rounded-full -translate-x-1/2 -translate-y-1/2"></div></div>
                         <div class="tuner-indicator" id="tunerIndicator"><i class="fas fa-power-off"></i></div>
                     </div>
                     
-                    <div class="text-center mb-8">
-                        <div class="freq-display inline-block mb-5">
+                    <div class="text-center mb-6 md:mb-8"> <!-- Improved spacing -->
+                        <div class="freq-display inline-block mb-4 md:mb-5"> <!-- Improved spacing -->
                             <p class="text-sm text-gray-400 mb-2">Nota detectada</p>
                             <p id="detectedNote" class="text-5xl md:text-6xl font-extrabold text-white neon-text">--</p>
                             <p id="detectedFreq" class="text-xl md:text-2xl font-medium text-blue-400">0.00 Hz</p>
@@ -741,7 +757,7 @@
                         <p id="centsDisplay" class="text-2xl font-bold text-gray-400">0 Cents</p>
                     </div>
                     
-                    <div class="mb-8">
+                    <div class="mb-6 md:mb-8"> <!-- Improved spacing -->
                         <div class="flex items-center justify-between mb-3 text-sm text-gray-300">
                             <span>Grave</span><span id="tuneStatus" class="font-bold">APAGADO</span><span>Agudo</span>
                         </div>
