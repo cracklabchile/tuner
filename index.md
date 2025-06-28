@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cracklab Tuner</title>
+    <title>Cracklab Tuner - Teclado FL Studio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/pitchy@4.1.0/dist/pitchy.min.js"></script>
@@ -356,8 +356,8 @@
             100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
         }
         
-        /* Key mapping for desktop */
-        .key-mapping {
+        /* Keyboard mapping guide */
+        .keyboard-guide {
             display: flex;
             justify-content: center;
             gap: 10px;
@@ -367,14 +367,14 @@
             background: rgba(30, 41, 59, 0.5);
             border-radius: 10px;
         }
-        .key-map-item {
+        .key-guide-item {
             display: flex;
             align-items: center;
             gap: 5px;
             font-size: 12px;
             color: #94a3b8;
         }
-        .key-map-key {
+        .key-guide-key {
             background: #334155;
             padding: 3px 8px;
             border-radius: 4px;
@@ -420,6 +420,9 @@
             .key-label {
                 font-size: 8px;
             }
+            .keyboard-guide {
+                display: none; /* Hide on mobile */
+            }
         }
         
         @media (max-width: 480px) {
@@ -443,6 +446,28 @@
             #detectedNote {
                 font-size: 32px;
             }
+        }
+        
+        /* Mobile keyboard helper */
+        .mobile-key-helper {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 100;
+            border-top: 1px solid #334155;
+        }
+        .mobile-key-helper button {
+            background: #334155;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            color: white;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -483,7 +508,106 @@
                     
                     <div id="generatorModeContainer" class="mb-6">
                         <div id="stringsContainer" class="hidden grid grid-cols-3 gap-3"></div>
-                        <div id="pianoContainer" class="hidden"></div>
+                        <div id="pianoContainer" class="hidden">
+                            <div class="keyboard-guide mb-4">
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">Z</span> 
+                                    <span>C3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">S</span> 
+                                    <span>C#3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">X</span> 
+                                    <span>D3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">D</span> 
+                                    <span>D#3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">C</span> 
+                                    <span>E3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">V</span> 
+                                    <span>F3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">G</span> 
+                                    <span>F#3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">B</span> 
+                                    <span>G3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">H</span> 
+                                    <span>G#3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">N</span> 
+                                    <span>A3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">J</span> 
+                                    <span>A#3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">M</span> 
+                                    <span>B3</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">Q</span> 
+                                    <span>C4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">2</span> 
+                                    <span>C#4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">W</span> 
+                                    <span>D4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">3</span> 
+                                    <span>D#4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">E</span> 
+                                    <span>E4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">R</span> 
+                                    <span>F4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">5</span> 
+                                    <span>F#4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">T</span> 
+                                    <span>G4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">6</span> 
+                                    <span>G#4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">Y</span> 
+                                    <span>A4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">7</span> 
+                                    <span>A#4</span>
+                                </div>
+                                <div class="key-guide-item">
+                                    <span class="key-guide-key">U</span> 
+                                    <span>B4</span>
+                                </div>
+                            </div>
+                        </div>
                         <div id="customContainer" class="hidden col-span-3 text-center py-8 text-gray-400">
                              <i class="fas fa-sliders-h text-3xl mb-2"></i>
                              <p>Usa los controles para ajustar la frecuencia.</p>
@@ -569,6 +693,22 @@
         </div>
     </div>
 
+    <!-- Mobile keyboard helper -->
+    <div class="mobile-key-helper md:hidden">
+        <button class="mobile-key" data-note="C" data-octave="3">C3</button>
+        <button class="mobile-key" data-note="C#" data-octave="3">C#3</button>
+        <button class="mobile-key" data-note="D" data-octave="3">D3</button>
+        <button class="mobile-key" data-note="D#" data-octave="3">D#3</button>
+        <button class="mobile-key" data-note="E" data-octave="3">E3</button>
+        <button class="mobile-key" data-note="F" data-octave="3">F3</button>
+        <button class="mobile-key" data-note="F#" data-octave="3">F#3</button>
+        <button class="mobile-key" data-note="G" data-octave="3">G3</button>
+        <button class="mobile-key" data-note="G#" data-octave="3">G#3</button>
+        <button class="mobile-key" data-note="A" data-octave="3">A3</button>
+        <button class="mobile-key" data-note="A#" data-octave="3">A#3</button>
+        <button class="mobile-key" data-note="B" data-octave="3">B3</button>
+    </div>
+
     <script>
     document.addEventListener('DOMContentLoaded', () => {
         // --- GLOBAL VARS & DOM REFS ---
@@ -612,34 +752,35 @@
         };
         const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
         
-        // Keyboard mapping for piano keys
+        // Keyboard mapping for piano keys - FL Studio style
         const keyMap = {
-            // First octave (white keys)
-            'KeyA': { note: 'C', octave: 3 },
-            'KeyS': { note: 'D', octave: 3 },
-            'KeyD': { note: 'E', octave: 3 },
-            'KeyF': { note: 'F', octave: 3 },
-            'KeyG': { note: 'G', octave: 3 },
-            'KeyH': { note: 'A', octave: 3 },
-            'KeyJ': { note: 'B', octave: 3 },
+            // Primera octava (teclas blancas y negras)
+            'KeyZ': { note: 'C', octave: 3 },
+            'KeyS': { note: 'C#', octave: 3 },
+            'KeyX': { note: 'D', octave: 3 },
+            'KeyD': { note: 'D#', octave: 3 },
+            'KeyC': { note: 'E', octave: 3 },
+            'KeyV': { note: 'F', octave: 3 },
+            'KeyG': { note: 'F#', octave: 3 },
+            'KeyB': { note: 'G', octave: 3 },
+            'KeyH': { note: 'G#', octave: 3 },
+            'KeyN': { note: 'A', octave: 3 },
+            'KeyJ': { note: 'A#', octave: 3 },
+            'KeyM': { note: 'B', octave: 3 },
             
-            // Second octave (white keys)
-            'KeyK': { note: 'C', octave: 4 },
-            'KeyL': { note: 'D', octave: 4 },
-            'Semicolon': { note: 'E', octave: 4 },
-            'Quote': { note: 'F', octave: 4 },
-            'Enter': { note: 'G', octave: 4 },
-            
-            // Black keys
-            'KeyW': { note: 'C#', octave: 3 },
-            'KeyE': { note: 'D#', octave: 3 },
-            'KeyT': { note: 'F#', octave: 3 },
-            'KeyY': { note: 'G#', octave: 3 },
-            'KeyU': { note: 'A#', octave: 3 },
-            
-            'KeyO': { note: 'C#', octave: 4 },
-            'KeyP': { note: 'D#', octave: 4 },
-            'BracketLeft': { note: 'F#', octave: 4 }
+            // Segunda octava
+            'KeyQ': { note: 'C', octave: 4 },
+            'Digit2': { note: 'C#', octave: 4 },
+            'KeyW': { note: 'D', octave: 4 },
+            'Digit3': { note: 'D#', octave: 4 },
+            'KeyE': { note: 'E', octave: 4 },
+            'KeyR': { note: 'F', octave: 4 },
+            'Digit5': { note: 'F#', octave: 4 },
+            'KeyT': { note: 'G', octave: 4 },
+            'Digit6': { note: 'G#', octave: 4 },
+            'KeyY': { note: 'A', octave: 4 },
+            'Digit7': { note: 'A#', octave: 4 },
+            'KeyU': { note: 'B', octave: 4 }
         };
 
         // --- OSCILLOSCOPE FUNCTIONS ---
@@ -800,6 +941,7 @@
                 DOM.stringsContainer.classList.remove('hidden');
             } else if (mode === 'piano') {
                 DOM.pianoContainer.classList.remove('hidden');
+                createPianoKeyboard();
             } else { // custom
                 DOM.customContainer.classList.remove('hidden');
             }
@@ -1074,6 +1216,22 @@
         // Keyboard event listeners
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('keyup', handleKeyUp);
+        
+        // Mobile keyboard helper
+        document.querySelectorAll('.mobile-key').forEach(button => {
+            button.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const note = button.dataset.note;
+                const octave = parseInt(button.dataset.octave);
+                const freq = calculateNoteFreq(note, octave);
+                startGenerator(freq);
+            });
+            
+            button.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                stopGenerator();
+            });
+        });
         
         // --- INITIALIZATION ---
         function initApp() {
