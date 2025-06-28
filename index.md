@@ -166,6 +166,7 @@
             border-radius: 8px;
             padding: 10px;
             box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.4);
+            overflow-x: auto;
         }
         .key {
             border: 1px solid #334155;
@@ -179,6 +180,7 @@
             font-weight: 600;
             font-size: 12px;
             color: #64748b;
+            position: relative;
         }
         .key.white {
             width: calc(100% / 14); /* 14 white keys in 2 octaves */
@@ -203,6 +205,15 @@
         .key.black:active, .key.black.pressed {
             background: linear-gradient(to bottom, #f59e0b, #d97706);
             color: white;
+        }
+        
+        /* Key labels for mobile */
+        .key-label {
+            position: absolute;
+            bottom: 5px;
+            font-size: 10px;
+            color: #64748b;
+            font-weight: bold;
         }
         
         /* Positioning black keys */
@@ -344,12 +355,101 @@
             50% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.8); }
             100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
         }
+        
+        /* Key mapping for desktop */
+        .key-mapping {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+            padding: 10px;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 10px;
+        }
+        .key-map-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .key-map-key {
+            background: #334155;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .tuner-container {
+                padding: 15px;
+            }
+            .section-box {
+                padding: 16px;
+            }
+            .instrument-btn, .string-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+            .control-btn {
+                padding: 12px;
+                font-size: 16px;
+            }
+            .piano-keyboard {
+                height: 150px;
+            }
+            .key.white {
+                height: 130px;
+            }
+            .key.black {
+                height: 85px;
+            }
+            .tuner-indicator {
+                width: 60px;
+                height: 60px;
+                font-size: 18px;
+            }
+            .freq-display {
+                padding: 12px;
+            }
+            #detectedNote {
+                font-size: 40px;
+            }
+            .key-label {
+                font-size: 8px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .piano-keyboard {
+                height: 120px;
+            }
+            .key.white {
+                height: 100px;
+            }
+            .key.black {
+                height: 70px;
+            }
+            .instrument-btn, .wave-btn {
+                font-size: 12px;
+                padding: 8px;
+            }
+            .control-btn {
+                padding: 10px;
+                font-size: 14px;
+            }
+            #detectedNote {
+                font-size: 32px;
+            }
+        }
     </style>
 </head>
 <body class="min-h-screen p-4">
     <div class="tuner-container p-6">
         <div class="text-center mb-8">
-            <h1 class="text-5xl font-bold header-gradient mb-2">
+            <h1 class="text-4xl md:text-5xl font-bold header-gradient mb-2">
                 <i class="fas fa-rocket mr-3"></i>Cracklab Tuner
             </h1>
             <p class="text-gray-400">Herramienta de precisión para músicos</p>
@@ -359,7 +459,7 @@
             <!-- Sección izquierda: Generador de tono -->
             <div class="lg:w-1/2">
                 <div class="section-box">
-                    <h2 class="text-2xl font-bold text-blue-400 mb-6"><i class="fas fa-wave-square mr-2"></i>Generador de Tono</h2>
+                    <h2 class="text-xl md:text-2xl font-bold text-blue-400 mb-6"><i class="fas fa-wave-square mr-2"></i>Generador de Tono</h2>
                     
                     <div class="mb-6">
                         <label class="block text-sm font-medium text-gray-300 mb-3">Modo:</label>
@@ -373,7 +473,7 @@
                     
                     <div class="mb-6">
                         <label class="block text-sm font-medium text-gray-300 mb-3">Referencia A4:</label>
-                        <select id="referenceSelect" class="w-full p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <select id="referenceSelect" class="w-full p-2 md:p-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             <option value="440">440 Hz (Estándar)</option>
                             <option value="432">432 Hz (Verdi)</option>
                             <option value="442">442 Hz (Orquestal)</option>
@@ -398,7 +498,7 @@
                     <div class="mb-6">
                         <div class="flex items-center justify-between mb-2">
                             <label class="text-sm font-medium text-gray-300">Frecuencia:</label>
-                            <input type="number" id="freqInput" min="20" max="2000" step="0.001" class="w-28 bg-gray-900 text-blue-400 font-mono text-right p-2 rounded-lg border border-gray-700">
+                            <input type="number" id="freqInput" min="20" max="2000" step="0.001" class="w-24 md:w-28 bg-gray-900 text-blue-400 font-mono text-right p-2 rounded-lg border border-gray-700">
                         </div>
                         <input id="freqSlider" type="range" min="20" max="2000" value="440" step="0.001" class="w-full">
                     </div>
@@ -432,7 +532,7 @@
             <!-- Sección derecha: Afinador cromático -->
             <div class="lg:w-1/2">
                  <div class="section-box h-full">
-                    <h2 class="text-2xl font-bold text-yellow-400 mb-6"><i class="fas fa-microphone-alt mr-2"></i>Afinador Cromático</h2>
+                    <h2 class="text-xl md:text-2xl font-bold text-yellow-400 mb-6"><i class="fas fa-microphone-alt mr-2"></i>Afinador Cromático</h2>
                     
                     <div class="mb-6 flex flex-col items-center gap-4">
                         <button id="micBtn" class="control-btn mic w-full">
@@ -440,7 +540,7 @@
                         </button>
                     </div>
                     
-                    <div class="relative mb-8 h-64 bg-gray-900 rounded-2xl overflow-hidden flex items-center justify-center">
+                    <div class="relative mb-8 h-52 md:h-64 bg-gray-900 rounded-2xl overflow-hidden flex items-center justify-center">
                         <div class="tuner-zone absolute h-4 w-full top-1/2 -translate-y-1/2 opacity-30"></div>
                         <div class="needle absolute top-[10%] left-1/2 -translate-x-1/2" id="needle"><div class="absolute top-0 left-1/2 w-4 h-4 bg-accent rounded-full -translate-x-1/2 -translate-y-1/2"></div></div>
                         <div class="tuner-indicator" id="tunerIndicator"><i class="fas fa-power-off"></i></div>
@@ -449,10 +549,10 @@
                     <div class="text-center mb-6">
                         <div class="freq-display inline-block mb-4">
                             <p class="text-sm text-gray-400 mb-1">Nota detectada</p>
-                            <p id="detectedNote" class="text-5xl font-extrabold text-white">--</p>
-                            <p id="detectedFreq" class="text-xl font-medium text-blue-400">0.00 Hz</p>
+                            <p id="detectedNote" class="text-4xl md:text-5xl font-extrabold text-white">--</p>
+                            <p id="detectedFreq" class="text-lg md:text-xl font-medium text-blue-400">0.00 Hz</p>
                         </div>
-                        <p id="centsDisplay" class="text-xl font-bold text-gray-400">0 Cents</p>
+                        <p id="centsDisplay" class="text-lg md:text-xl font-bold text-gray-400">0 Cents</p>
                     </div>
                     
                     <div class="mb-6">
@@ -511,6 +611,36 @@
             ]
         };
         const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        
+        // Keyboard mapping for piano keys
+        const keyMap = {
+            // First octave (white keys)
+            'KeyA': { note: 'C', octave: 3 },
+            'KeyS': { note: 'D', octave: 3 },
+            'KeyD': { note: 'E', octave: 3 },
+            'KeyF': { note: 'F', octave: 3 },
+            'KeyG': { note: 'G', octave: 3 },
+            'KeyH': { note: 'A', octave: 3 },
+            'KeyJ': { note: 'B', octave: 3 },
+            
+            // Second octave (white keys)
+            'KeyK': { note: 'C', octave: 4 },
+            'KeyL': { note: 'D', octave: 4 },
+            'Semicolon': { note: 'E', octave: 4 },
+            'Quote': { note: 'F', octave: 4 },
+            'Enter': { note: 'G', octave: 4 },
+            
+            // Black keys
+            'KeyW': { note: 'C#', octave: 3 },
+            'KeyE': { note: 'D#', octave: 3 },
+            'KeyT': { note: 'F#', octave: 3 },
+            'KeyY': { note: 'G#', octave: 3 },
+            'KeyU': { note: 'A#', octave: 3 },
+            
+            'KeyO': { note: 'C#', octave: 4 },
+            'KeyP': { note: 'D#', octave: 4 },
+            'BracketLeft': { note: 'F#', octave: 4 }
+        };
 
         // --- OSCILLOSCOPE FUNCTIONS ---
         function initOscilloscope() {
@@ -685,7 +815,13 @@
                     key.dataset.note = note;
                     key.dataset.octave = octave;
                     key.className = `key ${note.includes('#') ? 'black' : 'white'}`;
-                    key.textContent = note.includes('#') ? '' : `${note}${octave}`;
+                    
+                    // Add note label for mobile
+                    const label = document.createElement('div');
+                    label.className = 'key-label';
+                    label.textContent = note.includes('#') ? note : `${note}${octave}`;
+                    key.appendChild(label);
+                    
                     keyboard.appendChild(key);
                 });
             }
@@ -801,6 +937,51 @@
             DOM.tunerIndicator.innerHTML = '<i class="fas fa-power-off"></i>';
         }
         
+        // --- KEYBOARD SUPPORT ---
+        function handleKeyDown(e) {
+            // Ignore if not in piano mode
+            if (!DOM.pianoBtn.classList.contains('active')) return;
+            
+            const mapping = keyMap[e.code];
+            if (!mapping) return;
+            
+            e.preventDefault();
+            
+            // Find corresponding key element
+            const key = document.querySelector(`.key[data-note="${mapping.note}"][data-octave="${mapping.octave}"]`);
+            if (!key) return;
+            
+            // If this key is already active, do nothing
+            if (key === activeKey) return;
+            
+            // Stop any currently playing note
+            if (activeKey) {
+                activeKey.classList.remove('pressed');
+            }
+            
+            // Play the new note
+            const freq = calculateNoteFreq(mapping.note, mapping.octave);
+            startGenerator(freq);
+            key.classList.add('pressed');
+            activeKey = key;
+        }
+        
+        function handleKeyUp(e) {
+            const mapping = keyMap[e.code];
+            if (!mapping) return;
+            
+            e.preventDefault();
+            
+            // Find corresponding key element
+            const key = document.querySelector(`.key[data-note="${mapping.note}"][data-octave="${mapping.octave}"]`);
+            if (!key) return;
+            
+            // Only stop if this key is currently active
+            if (key === activeKey) {
+                stopGenerator();
+            }
+        }
+        
         // --- EVENT LISTENERS ---
         DOM.playBtn.addEventListener('click', () => {
             if (isGeneratorPlaying) stopGenerator();
@@ -889,6 +1070,10 @@
                 }
             }
         });
+        
+        // Keyboard event listeners
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', handleKeyUp);
         
         // --- INITIALIZATION ---
         function initApp() {
